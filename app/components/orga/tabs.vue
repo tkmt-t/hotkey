@@ -24,6 +24,16 @@
 </template>
 
 <script setup lang="ts">
+const {
+  hotkeyEnabled,
+  helloKey,
+  byeKey,
+} = defineProps<{
+  hotkeyEnabled: boolean
+  helloKey: string
+  byeKey: string
+}>()
+
 const hello = 'hello'
 
 const bye = 'bye'
@@ -31,4 +41,9 @@ const bye = 'bye'
 const tabs = [hello, bye]
 
 const tab = ref(hello)
+
+const enabled = computed(() => hotkeyEnabled)
+
+useDynamicHotkey(helloKey, () => tab.value = hello, enabled)
+useDynamicHotkey(byeKey, () => tab.value = bye, enabled)
 </script>

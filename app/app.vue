@@ -4,7 +4,11 @@
       <v-card>
         <v-card-text>
           <ClientOnly>
-            <orga-tabs />
+            <orga-tabs
+              :hotkey-enabled="true"
+              hello-key="h"
+              bye-key="b"
+            />
           </ClientOnly>
         </v-card-text>
 
