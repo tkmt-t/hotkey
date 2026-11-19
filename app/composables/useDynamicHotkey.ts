@@ -9,14 +9,14 @@
 export const useDynamicHotkey = (
   keys: string,
   callback: HotkeyCallback,
-  enabled: Ref<boolean>,
+  enabled: MaybeRefOrGetter<boolean>,
   options?: HotkeyOptions,
 ) => {
   // 解除関数を保持する
   let cleanup: (() => void) | null = null
 
   // 有効／無効の切り替え
-  watch(enabled,
+  watch(() => toValue(enabled),
     (isEnabled) => {
       if (isEnabled) {
         // 有効化
