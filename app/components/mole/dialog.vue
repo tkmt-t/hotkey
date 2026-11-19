@@ -1,5 +1,8 @@
 <template>
-  <v-dialog max-width="500">
+  <v-dialog
+    v-model="isOpen"
+    max-width="500"
+  >
     <template #activator="{ props: activatorProps }">
       <v-btn
         v-bind="activatorProps"
@@ -9,7 +12,7 @@
       />
     </template>
 
-    <template #default="{ isActive }">
+    <template #default>
       <v-card title="Dialog">
         <v-card-text>
           <div class="d-flex ga-2">
@@ -22,7 +25,7 @@
 
           <v-btn
             text="Close Dialog"
-            @click="isActive.value = false"
+            @click="isOpen = false"
           />
         </v-card-actions>
       </v-card>
@@ -31,4 +34,5 @@
 </template>
 
 <script setup lang="ts">
+const isOpen = defineModel<boolean>({ default: false })
 </script>

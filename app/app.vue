@@ -5,7 +5,7 @@
         <v-card-text>
           <ClientOnly>
             <orga-tabs
-              :hotkey-enabled="true"
+              :hotkey-enabled="!isOpen"
               hello-key="h"
               bye-key="b"
             />
@@ -13,7 +13,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <mole-dialog />
+          <mole-dialog v-model="isOpen" />
           <mole-menu />
         </v-card-actions>
       </v-card>
@@ -23,4 +23,5 @@
 </template>
 
 <script setup lang="ts">
+const isOpen = ref(false)
 </script>
