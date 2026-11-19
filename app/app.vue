@@ -1,6 +1,22 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <v-app>
+    <v-main>
+      <v-card>
+        <v-card-text>
+          <ClientOnly>
+            <orga-tabs />
+          </ClientOnly>
+        </v-card-text>
+
+        <v-card-actions>
+          <mole-dialog />
+          <mole-menu />
+        </v-card-actions>
+      </v-card>
+    </v-main>
+    <atom-footer />
+  </v-app>
 </template>
+
+<script setup lang="ts">
+</script>
