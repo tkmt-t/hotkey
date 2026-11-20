@@ -15,5 +15,9 @@ const greeting = 'hello'
 
 const onClick = () => alert(greeting)
 
-useDynamicHotkey(props.hotkeyKeys, onClick, () => props.hotkeyEnabled)
+useHotkeyRegistration(
+  props.hotkeyKeys,
+  onClick,
+  () => props.hotkeyEnabled,
+  'hello をアラート表示')
 </script>

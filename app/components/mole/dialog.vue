@@ -59,6 +59,6 @@ const {
 const open = () => isOpen.value = true
 const close = () => isOpen.value = false
 
-useDynamicHotkey(openKeys, open, () => hotkeyEnabled)
-useDynamicHotkey(closeKeys, close, () => hotkeyEnabled)
+useHotkeyRegistration(openKeys, open, () => hotkeyEnabled, 'ダイアログ オープン')
+useHotkeyRegistration(closeKeys, close, () => hotkeyEnabled, 'ダイアログ クローズ')
 </script>

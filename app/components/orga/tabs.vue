@@ -45,6 +45,16 @@ const bye = 'bye'
 
 const tab = ref(hello)
 
-useDynamicHotkey(props.helloTabKey, () => tab.value = hello, () => props.hotkeyEnabled)
-useDynamicHotkey(props.byeTabKey, () => tab.value = bye, () => props.hotkeyEnabled)
+useHotkeyRegistration(
+  props.helloTabKey,
+  () => tab.value = hello,
+  () => props.hotkeyEnabled,
+  'hello タブに切り替え')
+
+useHotkeyRegistration(
+  props.byeTabKey,
+  () => tab.value = bye,
+  () => props.hotkeyEnabled,
+  'bye タブに切り替え',
+)
 </script>

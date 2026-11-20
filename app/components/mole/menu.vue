@@ -38,5 +38,9 @@ const open = ref(false)
 
 const hotkeyEnabled = computed(() => props.hotkeyEnabled && open.value)
 
-useDynamicHotkey(props.hotkeyKeys, () => open.value = !open.value, () => props.hotkeyEnabled)
+useHotkeyRegistration(
+  props.hotkeyKeys,
+  () => open.value = !open.value,
+  () => props.hotkeyEnabled,
+  'メニュー トグル')
 </script>
