@@ -59,6 +59,14 @@ const {
 const open = () => isOpen.value = true
 const close = () => isOpen.value = false
 
-useHotkeyRegistration(openKeys, open, () => hotkeyEnabled, 'ダイアログ オープン')
-useHotkeyRegistration(closeKeys, close, () => hotkeyEnabled, 'ダイアログ クローズ')
+useHotkeyRegistration(
+  openKeys,
+  open,
+  () => hotkeyEnabled && !isOpen.value,
+  'ダイアログ オープン')
+useHotkeyRegistration(
+  closeKeys,
+  close,
+  () => hotkeyEnabled && isOpen.value,
+  'ダイアログ クローズ')
 </script>
