@@ -8,10 +8,10 @@
               <v-col>
                 <orga-tabs
                   :hotkey-enabled="!isOpen"
-                  hello-tab-key="h"
-                  bye-tab-key="b"
-                  hello-button-key="alt+h"
-                  bye-button-key="alt+b"
+                  hello-tab-key="f2"
+                  bye-tab-key="f3"
+                  hello-button-key="h"
+                  bye-button-key="b"
                 />
               </v-col>
               <v-col>
@@ -25,16 +25,16 @@
           <mole-dialog
             v-model="isOpen"
             :hotkey-enabled="true"
-            open-keys="o"
-            close-keys="c"
-            hello-key="1"
-            bye-key="2"
+            open-keys="f4"
+            close-keys="f4"
+            hello-key="h"
+            bye-key="b"
           />
           <mole-menu
             :hotkey-enabled="!isOpen"
-            hotkey-keys="m"
-            hello-keys="ctrl+h"
-            bye-keys="ctrl+b"
+            hotkey-keys="f5"
+            hello-keys="h"
+            bye-keys="b"
           />
         </v-card-actions>
       </v-card>
