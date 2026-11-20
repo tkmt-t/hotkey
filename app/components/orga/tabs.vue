@@ -4,46 +4,47 @@
     grow
   >
     <v-tab
-      v-for="item in tabs"
-      :key="item"
-      :value="item"
-    >
-      {{ item }}
-    </v-tab>
+      :value="hello"
+      :text="`${hello}:${props.helloTabKey}`"
+    />
+    <v-tab
+      :value="bye"
+      :text="`${bye}:${props.byeTabKey}`"
+    />
   </v-tabs>
 
   <v-tabs-window v-model="tab">
     <v-tabs-window-item :value="hello">
-      <mole-hello />
+      <mole-hello
+        :hotkey-enabled="props.hotkeyEnabled && tab == hello"
+        :hotkey-keys="props.helloButtonKey"
+      />
     </v-tabs-window-item>
 
     <v-tabs-window-item :value="bye">
-      <mole-bye />
+      <mole-bye
+        :hotkey-enabled="props.hotkeyEnabled && tab == bye"
+        :hotkey-keys="props.byeButtonKey"
+      />
     </v-tabs-window-item>
   </v-tabs-window>
 </template>
 
 <script setup lang="ts">
-const {
-  hotkeyEnabled,
-  helloKey,
-  byeKey,
-} = defineProps<{
+const props = defineProps<{
   hotkeyEnabled: boolean
-  helloKey: string
-  byeKey: string
+  helloTabKey: string
+  byeTabKey: string
+  helloButtonKey: string
+  byeButtonKey: string
 }>()
 
 const hello = 'hello'
 
 const bye = 'bye'
 
-const tabs = [hello, bye]
-
 const tab = ref(hello)
 
-const enabled = computed(() => hotkeyEnabled)
-
-useDynamicHotkey(helloKey, () => tab.value = hello, enabled)
-useDynamicHotkey(byeKey, () => tab.value = bye, enabled)
+useDynamicHotkey(props.helloTabKey, () => tab.value = hello, () => props.hotkeyEnabled)
+useDynamicHotkey(props.byeTabKey, () => tab.value = bye, () => props.hotkeyEnabled)
 </script>

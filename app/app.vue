@@ -6,15 +6,29 @@
           <ClientOnly>
             <orga-tabs
               :hotkey-enabled="!isOpen"
-              hello-key="h"
-              bye-key="b"
+              hello-tab-key="h"
+              bye-tab-key="b"
+              hello-button-key="alt+h"
+              bye-button-key="alt+b"
             />
           </ClientOnly>
         </v-card-text>
 
         <v-card-actions>
-          <mole-dialog v-model="isOpen" />
-          <mole-menu />
+          <mole-dialog
+            v-model="isOpen"
+            :hotkey-enabled="true"
+            open-keys="o"
+            close-keys="c"
+            hello-key="1"
+            bye-key="2"
+          />
+          <mole-menu
+            :hotkey-enabled="!isOpen"
+            hotkey-keys="m"
+            hello-keys="ctrl+h"
+            bye-keys="ctrl+b"
+          />
         </v-card-actions>
       </v-card>
     </v-main>

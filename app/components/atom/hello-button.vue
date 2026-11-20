@@ -1,12 +1,19 @@
 <template>
   <v-btn
-    :text="greeting"
-    @click="onCLick"
+    :text="`${greeting}:${props.hotkeyKeys}`"
+    @click="onClick"
   />
 </template>
 
 <script setup lang="ts">
+const props = defineProps<{
+  hotkeyEnabled: boolean
+  hotkeyKeys: string
+}>()
+
 const greeting = 'hello'
 
-const onCLick = () => alert(greeting)
+const onClick = () => alert(greeting)
+
+useDynamicHotkey(props.hotkeyKeys, onClick, () => props.hotkeyEnabled)
 </script>

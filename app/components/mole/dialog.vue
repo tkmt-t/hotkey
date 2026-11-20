@@ -7,7 +7,7 @@
       <v-btn
         v-bind="activatorProps"
         color="surface-variant"
-        text="Open Dialog"
+        :text="`Open Dialog:${openKeys}`"
         variant="flat"
       />
     </template>
@@ -16,16 +16,22 @@
       <v-card title="Dialog">
         <v-card-text>
           <div class="d-flex ga-2">
-            <atom-hello-button />
-            <atom-bye-button />
+            <atom-hello-button
+              :hotkey-enabled="hotkeyEnabled && isOpen"
+              :hotkey-keys="helloKey"
+            />
+            <atom-bye-button
+              :hotkey-enabled="hotkeyEnabled && isOpen"
+              :hotkey-keys="byeKey"
+            />
           </div>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
 
           <v-btn
-            text="Close Dialog"
-            @click="isOpen = false"
+            :text="`Close Dialog:${closeKeys}`"
+            @click="close"
           />
         </v-card-actions>
       </v-card>
@@ -35,4 +41,24 @@
 
 <script setup lang="ts">
 const isOpen = defineModel<boolean>({ default: false })
+
+const {
+  hotkeyEnabled,
+  openKeys,
+  closeKeys,
+  helloKey,
+  byeKey,
+} = defineProps<{
+  hotkeyEnabled: boolean
+  openKeys: string
+  closeKeys: string
+  helloKey: string
+  byeKey: string
+}>()
+
+const open = () => isOpen.value = true
+const close = () => isOpen.value = false
+
+useDynamicHotkey(openKeys, open, () => hotkeyEnabled)
+useDynamicHotkey(closeKeys, close, () => hotkeyEnabled)
 </script>
