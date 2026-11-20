@@ -3,15 +3,13 @@
     <v-main>
       <v-card>
         <v-card-text>
-          <ClientOnly>
-            <orga-tabs
-              :hotkey-enabled="!isOpen"
-              hello-tab-key="h"
-              bye-tab-key="b"
-              hello-button-key="alt+h"
-              bye-button-key="alt+b"
-            />
-          </ClientOnly>
+          <orga-tabs
+            :hotkey-enabled="!isOpen"
+            hello-tab-key="h"
+            bye-tab-key="b"
+            hello-button-key="alt+h"
+            bye-button-key="alt+b"
+          />
         </v-card-text>
 
         <v-card-actions>
