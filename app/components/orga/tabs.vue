@@ -6,11 +6,31 @@
     <v-tab
       :value="hello"
       :text="hello"
-    />
+    >
+      <template #append>
+        <atom-hotkey
+          v-if="props.hotkeyEnabled"
+          :keys="props.helloTabKey"
+          :enabled="tab != hello"
+          :callback="() => tab = hello"
+          description="hello タブに切り替え"
+        />
+      </template>
+    </v-tab>
     <v-tab
       :value="bye"
       :text="bye"
-    />
+    >
+      <template #append>
+        <atom-hotkey
+          v-if="props.hotkeyEnabled"
+          :keys="props.byeTabKey"
+          :enabled="tab != bye"
+          :callback="() => tab = bye"
+          description="bye タブに切り替え"
+        />
+      </template>
+    </v-tab>
   </v-tabs>
 
   <v-tabs-window v-model="tab">
@@ -44,17 +64,4 @@ const hello = 'hello'
 const bye = 'bye'
 
 const tab = ref(hello)
-
-useHotkeyRegistration(
-  props.helloTabKey,
-  () => tab.value = hello,
-  () => props.hotkeyEnabled,
-  'hello タブに切り替え')
-
-useHotkeyRegistration(
-  props.byeTabKey,
-  () => tab.value = bye,
-  () => props.hotkeyEnabled,
-  'bye タブに切り替え',
-)
 </script>
