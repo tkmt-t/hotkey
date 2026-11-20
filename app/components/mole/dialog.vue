@@ -30,7 +30,7 @@
           <v-spacer />
 
           <v-btn
-            :text="`Close Dialog:${closeKeys}`"
+            text="Close Dialog"
             @click="close"
           />
         </v-card-actions>
