@@ -5,11 +5,11 @@
   >
     <v-tab
       :value="hello"
-      :text="`${hello}:${props.helloTabKey}`"
+      :text="hello"
     />
     <v-tab
       :value="bye"
-      :text="`${bye}:${props.byeTabKey}`"
+      :text="bye"
     />
   </v-tabs>
 

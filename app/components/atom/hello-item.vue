@@ -1,6 +1,6 @@
 <template>
   <v-list-item
-    :title="`${greeting}:${props.hotkeyKeys}`"
+    :title="greeting"
     @click="onClick"
   />
 </template>

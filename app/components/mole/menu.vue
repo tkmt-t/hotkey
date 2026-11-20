@@ -10,7 +10,6 @@
       >
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
-      :{{ props.hotkeyKeys }}
     </template>
 
     <v-list>

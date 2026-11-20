@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    :text="`${greeting}:${props.hotkeyKeys}`"
+    :text="greeting"
     @click="onClick"
   />
 </template>

@@ -7,7 +7,7 @@
       <v-btn
         v-bind="activatorProps"
         color="surface-variant"
-        :text="`Open Dialog:${openKeys}`"
+        text="Open Dialog"
         variant="flat"
       />
     </template>
