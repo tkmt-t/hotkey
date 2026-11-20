@@ -39,7 +39,7 @@
         </v-card-actions>
       </v-card>
     </v-main>
-    <atom-footer />
+    <mole-footer />
   </v-app>
 </template>
 
