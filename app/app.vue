@@ -33,8 +33,8 @@
           <mole-menu
             :hotkey-enabled="!isOpen"
             hotkey-keys="f5"
-            hello-keys="h"
-            bye-keys="b"
+            hello-keys="h+alt"
+            bye-keys="b+alt"
           />
         </v-card-actions>
       </v-card>

@@ -1,23 +1,18 @@
 <template>
   <v-hotkey
-    v-if="enabled"
     v-bind="$attrs"
-    :keys="keys"
+    :keys="props.keys"
   />
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-  enabled: boolean
   keys: string
-  callback: HotkeyCallback
-  description: string
+  onHotkey: (e: KeyboardEvent) => void
+  description?: string
 }>()
 
-useHotkeyRegistration(
-  props.keys,
-  props.callback,
-  () => props.enabled,
-  props.description,
-)
+useHotkey(props.keys, props.onHotkey)
+
+useHotkeyRegistration(props.keys, props.description)
 </script>

@@ -12,5 +12,5 @@
 </template>
 
 <script setup lang="ts">
-const { store } = useHotkeyStore()
+const store = hotkeyStore.store
 </script>

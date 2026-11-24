@@ -10,6 +10,12 @@
       >
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
+      <atom-hotkey
+        v-if="props.hotkeyEnabled"
+        :keys="props.hotkeyKeys"
+        :on-hotkey="() => open = !open"
+        description="メニュー トグル"
+      />
     </template>
 
     <v-list>
@@ -36,10 +42,4 @@ const props = defineProps<{
 const open = ref(false)
 
 const hotkeyEnabled = computed(() => props.hotkeyEnabled && open.value)
-
-useHotkeyRegistration(
-  props.hotkeyKeys,
-  () => open.value = !open.value,
-  () => props.hotkeyEnabled,
-  'メニュー トグル')
 </script>

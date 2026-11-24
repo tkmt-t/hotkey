@@ -34,8 +34,6 @@
 </template>
 
 <script setup lang="ts">
-const { store } = useHotkeyStore()
-
 const fKeys = [
   'F1', 'F2', 'F3', 'F4', 'F5', 'F6',
   'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
@@ -43,7 +41,7 @@ const fKeys = [
 
 const slots = computed(() =>
   fKeys.map((key) => {
-    const hit = store.value.find(item =>
+    const hit = hotkeyStore.store.value.find(item =>
       item.keys.toLowerCase() === key.toLowerCase())
     return {
       key,
