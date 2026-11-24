@@ -9,7 +9,16 @@
         color="surface-variant"
         text="Open Dialog"
         variant="flat"
-      />
+      >
+        <template #append>
+          <atom-hotkey
+            v-if="hotkeyEnabled && !isOpen"
+            :keys="openKeys"
+            :on-hotkey="open"
+            description="ダイアログ オープン"
+          />
+        </template>
+      </v-btn>
     </template>
 
     <template #default>
@@ -32,7 +41,16 @@
           <v-btn
             text="Close Dialog"
             @click="close"
-          />
+          >
+            <template #append>
+              <atom-hotkey
+                v-if="hotkeyEnabled && isOpen"
+                :keys="closeKeys"
+                :on-hotkey="close"
+                description="ダイアログ クローズ"
+              />
+            </template>
+          </v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -58,15 +76,4 @@ const {
 
 const open = () => isOpen.value = true
 const close = () => isOpen.value = false
-
-useHotkeyRegistration(
-  openKeys,
-  open,
-  () => hotkeyEnabled && !isOpen.value,
-  'ダイアログ オープン')
-useHotkeyRegistration(
-  closeKeys,
-  close,
-  () => hotkeyEnabled && isOpen.value,
-  'ダイアログ クローズ')
 </script>

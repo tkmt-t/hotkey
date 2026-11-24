@@ -12,7 +12,7 @@
           v-if="props.hotkeyEnabled"
           :keys="props.helloTabKey"
           :enabled="tab != hello"
-          :callback="() => tab = hello"
+          :on-hotkey="() => tab = hello"
           description="hello タブに切り替え"
         />
       </template>
@@ -26,7 +26,7 @@
           v-if="props.hotkeyEnabled"
           :keys="props.byeTabKey"
           :enabled="tab != bye"
-          :callback="() => tab = bye"
+          :on-hotkey="() => tab = bye"
           description="bye タブに切り替え"
         />
       </template>
