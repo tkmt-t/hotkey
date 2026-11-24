@@ -9,9 +9,8 @@
     >
       <template #append>
         <atom-hotkey
-          v-if="props.hotkeyEnabled"
+          v-if="props.hotkeyEnabled && tab!= hello"
           :keys="props.helloTabKey"
-          :enabled="tab != hello"
           :on-hotkey="() => tab = hello"
           description="hello タブに切り替え"
         />
@@ -23,9 +22,8 @@
     >
       <template #append>
         <atom-hotkey
-          v-if="props.hotkeyEnabled"
+          v-if="props.hotkeyEnabled && tab != bye"
           :keys="props.byeTabKey"
-          :enabled="tab != bye"
           :on-hotkey="() => tab = bye"
           description="bye タブに切り替え"
         />
